@@ -28,7 +28,6 @@ public class MainTestEN {
 		System.out.println("\nstopword segmented : "+stopwordWordCut);
 		System.out.println("Word count : "+stopwordWordCut.size());
 		
-		
 		Set<Integer> complement = new HashSet<Integer>();
 		complement.addAll(wordCut);
 		complement.removeAll(stopwordWordCut);

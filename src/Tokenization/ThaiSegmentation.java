@@ -216,7 +216,7 @@ public class ThaiSegmentation {
 	} // public String doBackTracking(String str)
 
 	/***********************************************************/
-	public HashSet segment(String text) {
+	public HashSet stopwordSegment(String text) {
 		hsword = new HashSet();
 		result = new StringBuffer();
 		st = new StringTokenizer(text);
@@ -232,6 +232,29 @@ public class ThaiSegmentation {
 			String tstr = st.nextToken();
 			tstr = tstr.trim();
 			if ((Utility.dicth.search(tstr)) && (!Utility.stopWordHSTH.contains(tstr)) && (tstr.length() > 1)) {
+				hsword.add(tstr);
+			}
+		}
+		return hsword;
+
+	} // public String segment(String text)
+	
+	public HashSet segment(String text) {
+		hsword = new HashSet();
+		result = new StringBuffer();
+		st = new StringTokenizer(text);
+		while (st.hasMoreTokens()) {
+			String tmp = st.nextToken();
+			String wordLog = longestMatching(tmp);
+			String word = doBackTracking(wordLog);
+			result.append(word);
+		}
+
+		st = new StringTokenizer(new String(result), " / ");
+		while (st.hasMoreTokens()) {
+			String tstr = st.nextToken();
+			tstr = tstr.trim();
+			if ((Utility.dicth.search(tstr)) && (tstr.length() > 1)) {
 				hsword.add(tstr);
 			}
 		}
