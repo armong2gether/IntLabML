@@ -104,8 +104,7 @@ public class SetClassPath {
 	// load class label
 	private static String[] load_subDirectory() {
 		
-		String subf[] = { "dup", "bug" };
-		Utility.classLabel = subf;
+		String subf[] = Utility.classLabel;
 		
 		return subf;
 	}
